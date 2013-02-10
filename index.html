@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Track &middot; College Bus Tracking</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Login Form for Minimalist">
+	<meta name="author" content="Ali">
+
+	<!-- Le styles -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link href="css/docs.css" rel="stylesheet">
+	<!-- Custom scrollbars CSS -->
+	<link href="css/jquery.mCustomScrollbar.css" rel="stylesheet"/>
+
+
+	<!-- stylesheet for demo and examples -->
+	<style type="text/css">
+	<!--
+		
+		.stats-table { 
+			width:45%;
+			position:fixed;
+			top:210px;
+			bottom: 20px;
+			overflow:auto; 
+		}
+		
+	-->
+	</style>
+
+
+
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAEG46KSaG0AtCtflei2Okp3o8nN0Tx5HM&sensor=true">
+	</script>	
+
+</head>
+
+<body>
+	<div class="navbar navbar-static-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="index.php">
+					 College Bus Track
+				</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li class="active"><a href="#">Live Tracking</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Route<b class="caret"></b></a>
+							<ul class="dropdown-menu" id="route-list">
+								<li><a href="#">KA 41 38</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+	
+	<!-- <div class = "row" style = "margin-top:5em;">
+	</div>  -->
+
+	<div class="container-fluid">		
+
+		<div class = "row-fluid">
+			<div class = "span12">
+				<div class="well well-large page-header">
+					<h1>
+						Live Tracking<small style="color:black;">&nbsp;College Bus Tracking</small>
+					</h1>
+				</div>
+			</div>
+		</div>
+
+		
+		<div class = "row-fluid">
+
+			<div class = "span6">
+				<div class="well well-small">
+					<div id="googleMap" style="width: 100%; height: 380px;"></div>
+				</div>
+			</div>
+
+			<div class= "span6">
+				<div class="row-fluid">
+					<div class="span8 offset2">
+						<div id = "loading-bar">
+							<div class="progress progress-danger progress-striped active">
+								<div class="bar" style="width: 100%;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- This is not visible to the phone because of the fixed position attribute in the CSS file -->
+				<div id="content" class="stats-table hidden-phone" hidden="true">
+					<table class="table table-bordered table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Lat</th>
+								<th>Lon</th>
+								<th>Time</th>
+								<th>Moved?</th>
+								<th>Speed</th>
+							</tr>
+						</thead>
+						<tbody class="stats-table-body">
+						</tbody>
+					</table>
+				</div>
+				<!-- This is only visible to the phone (Mobile website) -->
+				<div class="visible-phone">
+					<table class="table table-bordered table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Lat</th>
+								<th>Lon</th>
+								<th>Time</th>
+								<th>Moved?</th>
+								<th>Speed</th>
+							</tr>
+						</thead>
+						<tbody class="stats-table-body">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Le Scripts -->
+	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js'></script>
+	<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.js'></script>
+	<script src="js/load-map.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<!-- mousewheel plugin -->
+	<script src="js/jquery.mousewheel.min.js"></script>
+	<!-- custom scrollbars plugin -->
+	<script src="js/jquery.mCustomScrollbar.js"></script>
+	<script>
+		(function($){
+			$(window).load(function(){
+				$(".stats-table").mCustomScrollbar({
+					set_width:false, /*optional element width: boolean, pixels, percentage*/
+					set_height:false, /*optional element height: boolean, pixels, percentage*/
+					horizontalScroll:false, /*scroll horizontally: boolean*/
+					scrollInertia:0, /*scrolling inertia: integer (milliseconds)*/
+					scrollEasing:"easeOutCirc", /*scrolling easing: string*/
+					mouseWheel:"auto", /*mousewheel support and velocity: boolean, "auto", integer*/
+					autoDraggerLength:true, /*auto-adjust scrollbar dragger length: boolean*/
+					scrollButtons:{ /*scroll buttons*/
+						enable:false, /*scroll buttons support: boolean*/
+						scrollType:"continuous", /*scroll buttons scrolling type: "continuous", "pixels"*/
+						scrollSpeed:20, /*scroll buttons continuous scrolling speed: integer*/
+						scrollAmount:40 /*scroll buttons pixels scroll amount: integer (pixels)*/
+					},
+					advanced:{
+						updateOnBrowserResize:true, /*update scrollbars on browser resize (for layouts based on percentages): boolean*/
+						updateOnContentResize:true, /*auto-update scrollbars on content resize (for dynamic content): boolean*/
+						autoExpandHorizontalScroll:true /*auto expand width for horizontal scrolling: boolean*/
+					},
+					callbacks:{
+						onScroll:function(){}, /*user custom callback function on scroll event*/
+						onTotalScroll:function(){}, /*user custom callback function on bottom reached event*/
+						onTotalScrollOffset:0 /*bottom reached offset: integer (pixels)*/
+					}
+				});
+				
+			});
+
+		})(jQuery);
+	</script>
+	<!-- Pusher Code -->
+	<script src="http://js.pusher.com/1.12/pusher.min.js"></script>
+	<script>
+		$(function(){
+			// Enable pusher logging - don't include this in production
+			Pusher.log = function(message) {
+				if (window.console && window.console.log) window.console.log(message);
+			};
+
+			// Flash fallback logging - don't include this in production
+			WEB_SOCKET_DEBUG = true;
+		});
+	</script>
+</body>
+</html>
