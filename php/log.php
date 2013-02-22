@@ -33,7 +33,8 @@
 
 	include('pusher.inc');
 	$pusher = new Pusher($key, $secret, $app_id);
-	$array = array('bus_id' => $bus_id,
+	$array = array(
+		'bus_id' => $bus_id,
 		 'lat'=> $lat, 
 		 'lon' => $lon, 
 		 'time' => $time ,
@@ -63,15 +64,4 @@
 
 	    return $deg+( (($min*60) + ($sec)) /3600);
 	} 
-	function push_update() {
-		include('pusher.inc');
-		$pusher = new Pusher($key, $secret, $app_id);
-		$array = array('bus_id' => $bus_id,
-			 'lat'=> $lat, 
-			 'lon' => $lon, 
-			 'time' => $time ,
-			 'speed' => $speed
-			 );
-		$pusher->trigger('track-channel', 'bus-moved', $array );
-	}
 ?>
