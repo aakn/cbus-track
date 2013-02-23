@@ -5,7 +5,7 @@
 	$password = 'aliasgar';                 // Your database password. If your database has no password, leave it empty.
 	
 	// Let's connect to host
-	$connection = mysql_connect($hostname, $username, $password) or DIE('Connection to host is failed, perhaps the service is down!');
+	$connection = mysql_connect($hostname, $username, $password) or DIE('Connection to host is failed, perhaps the service is down!' .mysql_error());
 	// Select the database
 	mysql_select_db($dbname) or DIE('Database name is not available!');
 ?>
