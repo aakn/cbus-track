@@ -1,5 +1,5 @@
 <?php
-	$hostname = 'localhost';        // Your MySQL hostname. Usualy named as 'localhost', so you're NOT necessary to change this even this script has already online on the internet.
+	$hostname = 'www.insigniadevs.com';        // Your MySQL hostname. Usualy named as 'localhost', so you're NOT necessary to change this even this script has already online on the internet.
 	$dbname   = 'insigmvn_cbus'; // Your database name.
 	$username = 'insigmvn_ali';             // Your database username.
 	$password = 'aliasgar';                 // Your database password. If your database has no password, leave it empty.
