@@ -13,6 +13,7 @@
 		if($currtime - $oldtime >= $hour) break;
 
 		$rows[]=$row;
+		$oldtime = $currtime;
 	}
 
 	echo json_encode($rows);
