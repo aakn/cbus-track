@@ -8,7 +8,7 @@
 	$oldtime1;
 	while($row = mysql_fetch_assoc($result)) {
 		$currtime = strtotime($row["time"]);
-		echo "$currtime <br/>"
+		echo "$currtime <br/>";
 		$rows[]=$row;
 	}
 
