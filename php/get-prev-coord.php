@@ -13,7 +13,7 @@
 		$difference = $currtime - $oldtime;
 
 		if($difference >= $hour) break;
-		echo "$difference <br/>";
+		echo "$difference >= $hour<br/>";
 
 		$rows[]=$row;
 		$oldtime = $currtime;
