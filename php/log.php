@@ -25,7 +25,7 @@
 	$lat = convert($lat);
 	$lon = convert($lon); 
 
-	$time = date('Y/m/d H:i:s');
+	$time = date('Y-m-d H:i:s');
 	$query = "insert into bus_log (lat,lon,time,speed,bus_id) values ('$lat','$lon','$time','$speed',$bus_id);";
 	//echo $query;
 	$result = mysql_query($query);
