@@ -4,7 +4,7 @@
 	if($_GET["debug"]) $debug = true;
 	$time = date('Y-m-d');
 	$timeold = date('Y/m/d');
-	$query = "select * from bus_log where bus_id = $busid and ( time like '$time%' or time like '$timeold%')  order by time desc;";
+	$query = "select * from bus_log where bus_id = $busid and ( time like '$time%' or time like '$timeold%')  order by time,id desc;";
 	$result = mysql_query($query);
 	$rows= array();
 	$hour = 1*60*60;
