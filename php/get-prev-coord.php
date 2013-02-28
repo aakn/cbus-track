@@ -10,11 +10,14 @@
 	while($row = mysql_fetch_assoc($result)) {
 		$currtime = strtotime($row["time"]);
 		if($oldtime == "") $oldtime = $currtime;
-		if($currtime - $oldtime >= $hour) break;
+		$difference = $currtime - $oldtime;
+
+		if($difference >= $hour) break;
+		echo "$difference <br/>";
 
 		$rows[]=$row;
 		$oldtime = $currtime;
 	}
 
-	echo json_encode($rows);
+	//echo json_encode($rows);
 ?>
