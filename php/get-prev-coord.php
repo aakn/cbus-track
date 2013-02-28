@@ -3,6 +3,7 @@
 	$busid = $_GET["id"];
 	$time = date('Y/m/d H:i:s');
 	$query = "select * from bus_log where bus_id = $busid and time = '$time' order by time desc;";
+	echo $query;
 	$result = mysql_query($query);
 	$rows= array();
 	while($row = mysql_fetch_assoc($result)) {
