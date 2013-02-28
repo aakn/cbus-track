@@ -4,7 +4,7 @@
 	$table=$_GET["table"];
 	if($table != "balance") $table="bus_log";
 	if($lim<20) $lim=20;
-	$query = "select * from $table order by time,id desc limit $lim;";
+	$query = "select * from $table order by time desc limit $lim;";
 	$result = mysql_query($query);
 	$rows=array();
 	while($row = mysql_fetch_assoc($result)) {
