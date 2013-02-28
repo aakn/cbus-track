@@ -5,7 +5,10 @@
 	$query = "select * from bus_log where bus_id = $busid and time like '$time%' order by time desc;";
 	$result = mysql_query($query);
 	$rows= array();
+	$oldtime1;
 	while($row = mysql_fetch_assoc($result)) {
+		$currtime = strtotime($row["time"]);
+		echo "$currtime <br/>"
 		$rows[]=$row;
 	}
 
