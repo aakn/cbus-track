@@ -1,6 +1,7 @@
 <?php
 	include_once("config.inc");
 	$busid = $_GET["id"];
+	if($_GET["debug"]) $debug = true;
 	$time = date('Y/m/d');
 	$query = "select * from bus_log where bus_id = $busid  order by time desc;";
 	$result = mysql_query($query);
@@ -10,14 +11,15 @@
 	while($row = mysql_fetch_assoc($result)) {
 		$currtime = strtotime($row["time"]);
 		if($oldtime == "") $oldtime = $currtime;
-		$difference = $currtime - $oldtime;
+		$difference = $oldtime - $currtime;
 
 		if($difference >= $hour) break;
-		echo "$difference >= $hour<br/>";
+		if($debug)
+			echo "$difference >= $hour<br/>";
 
 		$rows[]=$row;
 		$oldtime = $currtime;
 	}
-
-	//echo json_encode($rows);
+	if(!$debug)
+		echo json_encode($rows);
 ?>
