@@ -6,7 +6,6 @@
 	$result = mysql_query($query);
 	$rows= array();
 	while($row = mysql_fetch_assoc($result)) {
-		//echo json_encode($row);
 		$rows[]=$row;
 	}
 
