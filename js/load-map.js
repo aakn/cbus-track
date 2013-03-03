@@ -80,6 +80,9 @@ $(function(){
 
 			});	
 			console.log(coord_array); 
+		},
+		error: function(error) {
+			console.log("Encountered an error");
 		}
 	});
 
