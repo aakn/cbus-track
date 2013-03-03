@@ -81,7 +81,7 @@ $(function(){
 			});	
 			console.log(coord_array); 
 		},
-		error: function(error) {
+		error: function(request, error) {
 			console.log("Encountered an error");
 			console.log(error);
 		}
