@@ -81,9 +81,9 @@ $(function(){
 			});	
 			console.log(coord_array); 
 		},
-		error: function(request, error) {
+		error: function(request, status, error) {
 			console.log("Encountered an error");
-			console.log(error);
+			console.log(arguments);
 		}
 	});
 
