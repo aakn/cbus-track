@@ -7,7 +7,6 @@
 	$result = mysql_query($query);
 	while($row = mysql_fetch_assoc($result)) { $lasttime = $row["time"]; break;}
 	$lasttime = strtotime($lasttime);
-	echo $lasttime;
 
 	$time = date('Y-m-d', $lasttime);
 	//$timeold = date('Y/m/d');
