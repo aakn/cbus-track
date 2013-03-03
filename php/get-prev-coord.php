@@ -9,7 +9,7 @@
 	$lasttime = strtotime($lasttime);
 	echo $lasttime;
 
-	$time = date('Y-m-d');
+	$time = date('Y-m-d', $lasttime);
 	//$timeold = date('Y/m/d');
 
 
