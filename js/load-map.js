@@ -83,7 +83,7 @@ $(function(){
 		},
 		error: function(error) {
 			console.log("Encountered an error");
-			console.log(error));
+			console.log(error);
 		}
 	});
 
