@@ -3,14 +3,12 @@
 	$busid = $_GET["id"];
 	if($_GET["debug"]) $debug = true;
 	
-	$query = "select * from bus_log where bus_id = $busid order by time;";
+	$query = "select * from bus_log where bus_id = $busid order by id desc LIMIT 1;";
 	$result = mysql_query($query);
 	while($row = mysql_fetch_assoc($result)) { $lasttime = $row["time"]; break;}
 	$lasttime = strtotime($lasttime);
 
 	$time = date('Y-m-d', $lasttime);
-	//$timeold = date('Y/m/d');
-
 
 
 	$query = "select * from bus_log where bus_id = $busid and time like '$time%'  order by time desc;";
