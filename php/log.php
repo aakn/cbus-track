@@ -53,7 +53,7 @@
 
 	//$ch = curl_init("django.insigniadevs.com/add/1/1253.8802N/07735.3015E/50/e$is$45.43$INR.Valid/");
 	$url = "django.insigniadevs.com/add/"+$bus_id+"/"+$oldlat+"/"+$oldlon+"/"+$speed+"/"+$balance+"/";
-	echo $url+"<br/>";
+	echo "<br/>$url<br/>";
 	$ch = curl_init($url);
 	curl_exec($ch);
 	curl_close($ch);
