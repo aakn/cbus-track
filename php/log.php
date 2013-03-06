@@ -3,11 +3,11 @@
 	$coord = $_GET["text"];
 	$bus_id = $_GET["id"];
 	$balance = $_GET["bal"];
-	$valid = $_GET["v"];
+	$v = $_GET["v"];
 	$speed = $_GET["speed"];
 	
 
-	if($valid == "A") $valid = "YES";
+	if($v == "A") $valid = "YES";
 	else $valid = "NO";
 	
 	list($lat, $lon) = split('\$',$coord);
@@ -52,7 +52,7 @@
 	$pusher->trigger('track-channel', 'bus-moved', $array );
 
 	//$ch = curl_init("django.insigniadevs.com/add/1/1253.8802N/07735.3015E/50/e$is$45.43$INR.Valid/");
-	$url = "django.insigniadevs.com/add/$bus_id/$oldlat/$oldlon/$oldspeed/$balance/";
+	$url = "django.insigniadevs.com/add/$bus_id/$oldlat/$oldlon/$oldspeed/$balance/$v/";
 	//echo "<br/>$url<br/>";
 	$ch = curl_init($url);
 	curl_exec($ch);
