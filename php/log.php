@@ -3,9 +3,12 @@
 	$coord = $_GET["text"];
 	$bus_id = $_GET["id"];
 	$balance = $_GET["bal"];
+	$valid = $_GET["v"];
 	$speed = $_GET["speed"];
 	$speed = $speed * 1.852;
-	
+
+	if($valid == "A") $valid = "YES";
+	else $valid = "NO";
 	
 	list($lat, $lon) = split('\$',$coord);
 	
@@ -28,7 +31,7 @@
 	$lon = convert($lon); 
 
 	$time = date('Y-m-d H:i:s');
-	$query = "insert into bus_log (lat,lon,time,speed,bus_id,bal) values ('$lat','$lon','$time','$speed',$bus_id,'$balance');";
+	$query = "insert into bus_log (lat,lon,time,speed,bus_id,bal,valid) values ('$lat','$lon','$time','$speed',$bus_id,'$balance','$valid');";
 	//echo $query;
 	$result = mysql_query($query);
 	echo $result;
