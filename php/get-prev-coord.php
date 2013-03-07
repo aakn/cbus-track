@@ -15,6 +15,7 @@
 	$result = mysql_query($query);
 	$rows= array();
 	$hour = 1*60*60;
+	
 	$oldtime="";
 	while($row = mysql_fetch_assoc($result)) {
 		$currtime = strtotime($row["time"]);
