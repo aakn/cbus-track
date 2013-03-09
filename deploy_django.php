@@ -7,9 +7,10 @@
 	 *		https://gist.github.com/1809044
 	 */
 
+	$working_directory = 'cd /var/www/django/;';
+
 	// The commands
 	$commands = array(
-		'cd /var/www/django/',
 		'echo $PWD',
 		'whoami',
 		'git pull',
@@ -23,7 +24,7 @@
 	$output = '';
 	foreach($commands AS $command){
 		// Run it
-		$tmp = shell_exec($command);
+		$tmp = shell_exec($working_directory.$command);
 		// Output
 		$output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
 		$output .= htmlentities(trim($tmp)) . "\n";
