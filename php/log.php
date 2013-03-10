@@ -54,7 +54,7 @@
 	if ($balance == "") $balance = "BALANCEFAIL";
 	//$ch = curl_init("django.insigniadevs.com/add/1/1253.8802N/07735.3015E/50/A/e$is$45.43$INR.Valid/");
 	$url = "$base_url/add/$bus_id/$oldlat/$oldlon/$oldspeed/$v/$balance/";
-	echo "<br/>$url<br/>";
+	// echo "<br/>$url<br/>";
 	$ch = curl_init($url);
 	curl_exec($ch);
 	curl_close($ch);
