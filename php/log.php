@@ -56,7 +56,8 @@
 	$url = "$base_url/add/$bus_id/$oldlat/$oldlon/$oldspeed/$v/".urlencode($balance)."/";
 	// echo "<br/>$url<br/>";
 	$ch = curl_init($url);
-	curl_exec($ch);
+	curl_setopt($ch, CURLOPT_NOBODY, true);
+	$content = curl_exec($ch);
 	curl_close($ch);
 
 
